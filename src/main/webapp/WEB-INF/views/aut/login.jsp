@@ -23,12 +23,12 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Witaj !</h1>
                   </div>
-                  <form class="user">
+                  <form class="user"method="post" action='<c:url value="/login"/>'>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Wprowadź swój adres Email...">
+                      <input type="text" class="form-control form-control-user" name="username" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Wprowadź swój adres Email...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Hasło">
+                      <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Hasło">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -36,7 +36,7 @@
                         <label class="custom-control-label" for="customCheck">Zapamiętaj mnie</label>
                       </div>
                     </div>
-                    <a href="index.jsp" class="btn btn-primary btn-user btn-block">
+                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Login">
                       Login
                     </a>
                     <hr>

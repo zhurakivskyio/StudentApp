@@ -1,3 +1,4 @@
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="now" class="java.util.Date"/>
@@ -178,7 +179,7 @@
 
             </div>
             <!-- /.container-fluid -->
-
+<security:authorize access="hasAnyRole('ADMIN')">
 
    <div class="jumbotron">
 
@@ -186,7 +187,7 @@
                 <p>Bootstrap + JSP + Spring Boot + MySQL</p>
                 <p>Dzisiaj jest: </p>
             </div>
-
+</security:authorize>
        
               
         </div>
