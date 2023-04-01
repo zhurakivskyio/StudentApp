@@ -61,7 +61,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Imię nazwisko</span>
-               
+
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -88,11 +88,11 @@
 
 
  <div class="col-lg-12">
-                <a href='' class="btn btn-warning btn-block mb-3"><i
+                <a href='<c:url value="/addTask"/>' class="btn btn-warning btn-block mb-3"><i
                         class="fas fa-exclamation-triangle"></i><strong> Dodaj
                     taska</strong></a>
                 </div>
-               
+
 
 
 
@@ -148,53 +148,19 @@
 
 
                 <div class="col-lg-10">
-
-                    <div class="card mb-4 py-3 border-left-primary">
+<c:forEach items="${taskModel}" var="item">
+    <a href="#">
+    <div class="card mb-4 py-3 border-left-${item.color}">
                         <div class="card-body">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dominik Maciąg
-                                | <strong>Dodano:</strong> 2020-07-09 | <strong>Deadline:</strong> 2020-07-09</div>
-                            Treść taska jakaś dłuższa nie musi być krótka jako Lorem ipsum to pisze aby sprawdzić jak
-                            będzie wyglądać
+    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">${item.studentModel.firstName} ${item.studentModel.lastName}
+    | <strong>Dodano:</strong> <fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" /> | <strong>Deadline:</strong> <fmt:formatDate pattern = "yyyy-MM-dd" value = "${item.deadline}" /></div>
+    ${item.description}
                         </div>
                     </div>
+    </a>
+</c:forEach>
 
-
-                    <div class="card mb-4 py-3 border-left-secondary">
-                        <div class="card-body">
-                            Treść taska jakaś dłuższa nie musi być krótka jako Lorem ipsum to pisze aby sprawdzić jak
-                            będzie wyglądać
-                        </div>
-                    </div>
-
-                    <div class="card mb-4 py-3 border-left-success">
-                        <div class="card-body">
-                            .border-left-success
-                        </div>
-                    </div>
-
-                    <div class="card mb-4 py-3 border-left-info">
-                        <div class="card-body">
-                            .border-left-info
-                        </div>
-                    </div>
-
-                    <div class="card mb-4 py-3 border-left-warning">
-                        <div class="card-body">
-                            .border-left-warning
-                        </div>
-                    </div>
-
-                    <div class="card mb-4 py-3 border-left-danger">
-                        <div class="card-body">
-                            .border-left-danger
-                        </div>
-                    </div>
-
-                    <div class="card mb-4 py-3 border-left-dark">
-                        <div class="card-body">
-                            .border-left-dark
-                        </div>
-                    </div>
+                </div>
 
                 </div>
 
@@ -209,7 +175,7 @@
 
             </div>
             <!-- /.container-fluid -->
-      
+
         </div>
         <!-- End of Main Content -->
 

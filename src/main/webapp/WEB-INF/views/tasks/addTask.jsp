@@ -84,9 +84,9 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+            <form method="post" action='<c:url value="/addTask"/>'>
                     <!-- Content Row -->
-                    <div class="row">
+                    <form class="row">
                         <div class="col-xl-12 col-md-12 mb-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -94,13 +94,12 @@
                                    
                                    
 <div class="form-group row">
-    <label for="firstName" class="col-2 col-form-label">Wybierz kursanta</label>
-    <div class="col-10">
-  <select class="form-control" id="sel1">
+    <label class="col-2 col-form-label">Wybierz kursanta</label>    <div class="col-10">
+  <select class="form-control" name="studentModel.id">
     <option hidden>wybierz</option>
-    <option>kursant1</option>
-    <option>kursant2</option>
-    <option>kursant3</option>
+      <c:forEach items="${studentModel}" var="title">
+          <option value="${title.id}">${title.firstName} ${title.lastName}</option>
+      </c:forEach>
   </select>
     </div>
 </div>                     
@@ -110,7 +109,7 @@
                                     <div class="form-group row">
                                         <label class="col-2 col-form-label">Deadline</label>
                                         <div class="col-10">
-                                            <input class="form-control" type="date" placeholder="">
+                                            <input class="form-control" type="date" name="deadline" max="3000-12-31" min="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}"/>>
                                         </div>
                             </div>
                           
@@ -118,7 +117,7 @@
                             <div class="form-group row">
                                 <label class="col-2 col-form-label">Tresć zadania:</label>
                                 <div class="col-10">
-                                <textarea class="form-control" rows="5" placeholder="tutaj opisz zadanie..."></textarea>
+                                <textarea class="form-control" rows="5" name="description" placeholder="tutaj opisz zadanie..."></textarea>
                                 </div>
                             </div>
 
@@ -137,23 +136,23 @@
                                     <div class="col-md-9 col-sm-9 col-xs-9">
                                     <div class="row">
                                     <div class="col-sm-2">
-                                    <label class="radio-inline"><input type="radio" value="success" checked>
+                                    <label class="radio-inline"><input type="radio" value="success" name="color">
                                     <i class="btn btn-success btn-circle btn-sm"></i> poziom junior</label>
                                     </div>
                                     <div class="col-sm-2">
-                                    <label class="radio-inline"><input type="radio" value="info" checked>
+                                    <label class="radio-inline"><input type="radio" value="info" name="color">
                                     <i class="btn btn-info btn-circle btn-sm"></i> poziom junior+</label>
                                     </div>
                                     <div class="col-sm-2">
-                                    <label class="radio-inline"><input type="radio" value="secondary" checked>
+                                    <label class="radio-inline"><input type="radio" value="secondary" name="color">
                                     <i class="btn btn-secondary btn-circle btn-sm"></i> poziom mid</label>
                                     </div>
                                     <div class="col-sm-2">
-                                    <label class="radio-inline"><input type="radio" value="primary" checked>
+                                    <label class="radio-inline"><input type="radio" value="primary" name="color">
                                     <i class="btn btn-primary btn-circle btn-sm"></i> poziom mid+</label>
                                     </div>
                                     <div class="col-sm-2">
-                                        <label class="radio-inline"><input type="radio" value="danger" checked>
+                                        <label class="radio-inline"><input type="radio" value="danger" name="color">
                                             <i class="btn btn-danger btn-circle btn-sm"></i> poziom senior</label>
                                     </div>
 
@@ -169,8 +168,8 @@
  <input class="btn btn-success pull-left" type="submit" value="Wyślij" id="searchButton"></input>
          
 
-    
 
+</form>
         </div>
         <!-- /.container-fluid -->
 
