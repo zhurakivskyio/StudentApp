@@ -5,6 +5,8 @@ import com.example.studentapp.repository.StudentRepository;
 import com.example.studentapp.util.StudentException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,9 @@ public class StudentService {
 
     public void removeStudent(Long id) {
         repo.deleteById(id);
+    }
+
+    public Page<StudentModel> getStudentsListPageable(Pageable pageable){
+        return repo.findAll(pageable);
     }
 }

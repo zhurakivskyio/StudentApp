@@ -5,6 +5,8 @@ import com.example.studentapp.service.StudentService;
 import com.example.studentapp.util.StudentException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -75,6 +77,12 @@ public class StudentController {
     public RedirectView removeStudent(@PathVariable("id") Long id){
         service.removeStudent(id);
         return new RedirectView("/students");
+    }
+
+    @GetMapping("/allStudents")
+    public Page<StudentModel> getStudentsListPageable(Pageable pageable){
+        int currentPage = pageable.getPageNumber();
+        return service.getStudentsListPageable(pageable);
     }
 
 

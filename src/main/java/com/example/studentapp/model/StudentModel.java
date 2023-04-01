@@ -35,7 +35,7 @@ public class StudentModel {
     private String start;
 
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "studentModel")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "studentModel")
     private Set<TaskModel> tasks = new HashSet<>();
 
 
